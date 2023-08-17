@@ -1,1 +1,22 @@
 /* You can add global styles to this file, and also import other style files */
+
+
+.color1 {color: #009fff;}
+.color2 {color: #41b6ff;}
+.color3 {color: #add1ff;}
+.color4 {color: #edefff;}
+.color5 {color: #ffffff;}
+
+
+:root {
+    /** primary **/
+    --primary: #009fff;
+    --secondary:black;
+    --third: #535353;
+    --warning: #fbff10;
+    --info: #3957ff;
+    --background:#edefff;
+    --border-line:#41b6ff;
+  }
+  @import "primeng/resources/themes/lara-light-blue/theme.css";
+@import "primeng/resources/primeng.css";

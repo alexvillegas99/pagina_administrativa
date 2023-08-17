@@ -1,0 +1,43 @@
+<div class="side-nav-content">
+  <ul class="nav-list" [ngClass]="{ 'nav-list-open': sideNavStatus }">
+    <li
+      class="nav-list-item"
+      [routerLink]="['/admin/mensajes']"
+      (click)="activedMenu(1)"
+      [ngClass]="{ active: menu1 }"
+    >
+      <div class="name">
+        <i class="fa fa-comments" aria-hidden="true"></i>
+        <span>
+          <label>Chat en vivo</label>
+        </span>
+      </div>
+    </li>
+    <li
+      class="nav-list-item"
+      [routerLink]="['/admin/lotaip']"
+      (click)="activedMenu(2)"
+      [ngClass]="{ active: menu2 }"
+    >
+      <div class="name">
+        <i class="fa fa-comments" aria-hidden="true"></i>
+        <span>
+          <label>Lotaip</label>
+        </span>
+      </div>
+    </li>
+    <li
+      class="nav-list-item"
+      [routerLink]="['/admin/galieria-imagenes']"
+      (click)="activedMenu(3)"
+      [ngClass]="{ active: menu3 }"
+    >
+      <div class="name">
+        <i class="fa fa-comments" aria-hidden="true"></i>
+        <span>
+          <label>Galería de imágenes</label>
+        </span>
+      </div>
+    </li>
+  </ul>
+</div>

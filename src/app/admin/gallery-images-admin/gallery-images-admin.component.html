@@ -1,0 +1,76 @@
+<div class="screen">
+  <button
+    class="btn btn-primary"
+    *ngIf="!add_gallery"
+    (click)="changeAddGallery()"
+  >
+    <i class="fa fa-plus"></i>Agregar Galería
+  </button>
+  <div class="card" *ngIf="add_gallery">
+    <div class="card-body" [formGroup]="formGalleryName">
+      <input
+        type="text"
+        class="form-control"
+        style="max-width: 350px"
+        placeholder="Nombre de la galería"
+        formControlName="name"
+      />
+      <button
+        class="btn btn-info"
+        style="margin-top: 0.5rem"
+        [disabled]="formGalleryName.invalid"
+        (click)="addGalleryNameService()"
+      >
+        <i class="fa fa-plus"></i>Agregar
+      </button>
+    </div>
+  </div>
+  <div class="galleries" style="margin-top: 0.5rem">
+    <p-accordion [activeIndex]="galleryIndex">
+      <p-accordionTab
+        [header]="gallery.name"
+        *ngFor="let gallery of galleries; let i = index"
+        (click)="changeGallery(i)"
+      >
+        <button
+          class="btn btn-info"
+          (click)="changeAddImage()"
+          *ngIf="!add_img"
+          style="margin: 0.5rem 0rem"
+        >
+          <i class="fa fa-plus"></i> Agregar Imagen
+        </button>
+        <div class="card" *ngIf="add_img">
+          <div class="card-body">
+            <div class="fileUploadInput" style="margin-top: 0.5rem">
+              <label>✨ Cargar Archivo </label>
+              <input
+                type="file"
+                (change)="onFileSelected($event)"
+                accept="image/*"
+                multiple="false"
+              />
+
+              <button>+</button>
+            </div>
+            <br />
+            <button class="btn btn-info" (click)="addImage()">Agregar</button>
+          </div>
+        </div>
+
+        <div class="images" style="margin-top: 1rem; width: 100%; display: flex; flex-direction: row; justify-content: flex-start; gap: .5rem; flex-wrap: wrap;" >
+          <div
+            class="img card"
+            *ngFor="let img of gallerySelected.images"
+            style="display: flex; flex-direction: column;width: 250px;justify-content: center; align-items: center; gap: .5rem; padding: 2rem; flex-wrap: wrap;"
+          >
+            <img [src]="img.url" alt="" style="width: 200px;height: 150px;" />
+            <button class="btn btn-danger" (click)="deleteImg(img)">
+              <i class="fa fa-trash"></i> Eliminar
+            </button>
+          </div>
+        </div>
+      </p-accordionTab>
+    </p-accordion>
+  </div>
+</div>

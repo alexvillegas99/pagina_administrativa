@@ -1,0 +1,158 @@
+<div class="screen">
+  <div class="year">
+    <div class="card">
+      <div class="card-body">
+        <h1 class="header">Lotaip</h1>
+
+        <button
+          class="btn btn-info"
+          *ngIf="!addLotaip"
+          (click)="setStateAddLotaip()"
+        >
+          <i class="fa fa-plus"></i> Agregar Lotaip
+        </button>
+        <div class="add-lotaip card" *ngIf="addLotaip">
+          <div class="card-body" [formGroup]="lotaipForm">
+            <input type="text" class="form-control" formControlName="lotaip" />
+            <button class="btn btn-success" (click)="addLotaipService()">
+              Agregar
+            </button>
+          </div>
+        </div>
+        <div
+          class="card lotaip"
+          *ngFor="let lotaip of lotaipDocuments; let i = index"
+          [class.active]="i === indexLotaipSelected"
+          style="cursor: pointer"
+          (click)="changeLotaip(i)"
+        >
+          <div
+            class="card-body"
+            style="
+              display: flex;
+              flex-direction: row;
+              justify-content: space-between;
+            "
+          >
+            {{ lotaip.name }}
+            <button
+              class="btn btn-danger"
+              (click)="deleteLotaip(i)"
+              style="width: 2.5rem"
+            >
+              <i class="fa fa-trash"></i>
+            </button>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="months">
+    <p-accordion [activeIndex]="indexCategorySelected">
+      <p-accordionTab
+        [header]="category.name"
+        *ngFor="let category of categorySelected; let i = index"
+        (click)="changeCategoty(i)"
+      >
+        <button class="btn btn-danger" (click)="deleteCategory(i)">
+          <i class="fa fa-trash"></i> Eliminar mes
+        </button>
+        <p
+          *ngFor="let item of category.items"
+          style="
+            margin-top: 1rem;
+            display: flex;
+            flex-direction: row;
+            justify-content: space-between;
+          "
+        >
+          <label
+            class="link"
+            style="
+              margin-left: 1rem;
+              color: blue;
+              text-decoration: underline;
+              cursor: pointer;
+            "
+            (click)="openPDF(item.urlPDF)"
+          >
+            <i
+              class="fa fa-file-text"
+              aria-hidden="true"
+              style="margin-right: 1rem"
+            ></i
+            >{{ item.name }}
+          </label>
+          <button class="btn btn-danger" (click)="deleteItem(item)">
+            <i class="fa fa-trash"></i>
+          </button>
+        </p>
+        <br />
+        <button
+          class="btn btn-info"
+          *ngIf="!addItem"
+          (click)="setStateAddItem()"
+          style="margin-top: 1rem"
+        >
+          <i class="fa fa-plus"></i> Agregar Item
+        </button>
+        <div class="card" style="margin-top: 1rem" *ngIf="addItem">
+          <div class="card-body" [formGroup]="itemForm">
+            <input type="text" class="form-control" formControlName="name" />
+
+            <div class="fileUploadInput" style="margin-top: 0.5rem">
+              <label>✨ Cargar Archivo por lotes</label>
+              <input
+                type="file"
+                (change)="onFileSelected($event)"
+                accept="application/pdf"
+              />
+
+              <button>+</button>
+            </div>
+            <button
+              class="btn btn-info"
+              (click)="addItemService()"
+              style="margin-top: 0.5rem"
+            >
+              Agregar
+            </button>
+          </div>
+        </div>
+      </p-accordionTab>
+    </p-accordion>
+    <button
+      class="btn btn-info"
+      (click)="setStateAddCategory()"
+      *ngIf="!addCategory"
+      style="margin-top: 1rem"
+    >
+      <i class="fa fa-plus"></i> Agregar Mes
+    </button>
+    <div class="add-category card" *ngIf="addCategory">
+      <div class="card-body" [formGroup]="categoryForm">
+        <input
+          type="text"
+          class="form-control"
+          formControlName="name"
+          style="max-width: 350px; margin-bottom: 1rem"
+        />
+        <button class="btn btn-success" (click)="addCategoryService()">
+          Agregar
+        </button>
+      </div>
+    </div>
+    <div
+      class="mesage"
+      *ngIf="categorySelected.length === 0"
+      style="display: grid; place-items: center; padding-top: 5rem"
+    >
+      <label
+        class="text"
+        style="font-size: 20px; padding: 1rem; font-weight: bold"
+        >No se encontraron resultados</label
+      >
+      <img src="assets/img/not-found.png" alt="" style="width: 250px" />
+    </div>
+  </div>
+</div>

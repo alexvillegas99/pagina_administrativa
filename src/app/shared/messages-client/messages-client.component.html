@@ -1,0 +1,65 @@
+<div class="card" *ngIf="viewChat">
+  <div class="exit-chat" style="padding: 10px; display: flex;flex-direction: row; justify-content: space-between;"> 
+    <label style="font-weight: bold; font-size: 15px;"> Chat en linea</label>
+    <button class="btn btn-danger" (click)="showMessage()" >
+      <i class="fa fa-times" aria-hidden="true" style="color: black;"></i>
+    </button>
+  </div>
+  <div class="card-body" *ngIf="user$ | async as currentUser">
+    <div class="messages" *ngIf="messages$ | async as messages" #scrollContainer>
+      <div class="chat-bubble-container"  [ngClass]="{ sender: message.senderId === currentUser.uid }"
+      *ngFor="let message of messages">
+        <div class="chat-bubble">  {{ message.text }} <span class="chat-time">{{
+          message.sentDate | dateDisplay
+        }}</span></div>
+      </div>
+
+    </div>
+    <div class="send-message">
+      <div class="input-group mb-3">
+        <input
+          type="text"
+          class="form-control"
+          placeholder="Mensaje"
+          aria-label="Recipient's username"
+          aria-describedby="basic-addon2"
+          [(ngModel)]="message"
+        />
+        <span class="input-group-text" id="basic-addon2" style="cursor: pointer" (click)="sendMessage()"
+          ><i class="fa fa-paper-plane" aria-hidden="true"></i
+        ></span>
+      </div>
+    </div>
+  </div>
+  <div class="card-body" *ngIf="user$">
+    <div
+      class="login"
+      [formGroup]="emailForm"
+      style="
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        height: 30rem;
+        width: 90%;
+        gap: 2rem;
+      "
+    >
+      <input
+        type="text"
+        formControlName="email"
+        class="form-control"
+        placeholder="Email"
+      />
+      <button
+        class="btn btn-primary"
+        style="width: 100%"
+        (click)="loginOrRegister()"
+      >
+        Comenzar a chatear
+      </button>
+    </div>
+  </div>
+ 
+</div>
+<button class="btn btn-info" *ngIf="!viewChat" style="border-radius: 50%; padding: 1rem;" (click)="showMessage()"><i class="fa fa-comments" aria-hidden="true"></i></button>

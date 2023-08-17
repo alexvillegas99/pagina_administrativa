@@ -1,0 +1,147 @@
+nav {
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: flex-start;
+  }
+  .side-nav-button {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 1.5rem;
+    cursor: pointer;
+  }
+  .logo-container {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    margin-left: 10px;
+  }
+  /* .side-nav-button:hover {
+      background-color: rgba(255, 255, 255, 0.978);
+      border-radius: 30%;
+    } */
+  .fa-bars {
+    color: black;
+    display: none;
+  }
+  .navbar,
+  .navbar-brand {
+    background-color: var(--background);
+    color: black;
+    height: 5rem;
+    padding: 0px;
+   
+  }
+  .avatar {
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+  }
+  .avatar-container {
+    width: 350px;
+    display: flex;
+    justify-content: space-between;
+    flex-direction: row;
+    float: right;
+    margin-right: 20px;
+  }
+  .img-container,
+  .details-container,
+  .logout-container {
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+    
+  }
+  .line {
+    width: 100%;
+    height: 2px;
+    background-color: var(--third);
+  }
+  hr {
+    border: none;
+    border-left: 2px solid hsla(200, 10%, 50%, 100);
+    height: 50px;
+    width: 1px;
+    background-color: var(--secondary);
+  }
+  .fa-solid {
+    color: var(--secondary);
+  }
+  .name {
+    font-weight: 600;
+    font-size: 18px;
+    color: black;
+  }
+  .last-connection {
+    font-weight: 400;
+    font-size: 12px;
+    color: #8F8F8F;
+  }
+  .date-hour {
+    font-weight: 400;
+    font-size: 12px;
+    color: #535353;
+    
+  }
+  .logout {
+    font-weight: 400;
+    font-size: 12px;
+    color: red !important;
+  }
+  .fa-right-from-bracket {
+    padding: 10px 10px 10px 10px;
+    font-size: 25px;
+    color: black;
+  }
+  .exit {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+   .fa-right-from-bracket{
+    color: red !important;
+   }
+  }
+  
+  .logout:hover {
+    text-decoration: underline;
+    cursor: pointer;
+  }
+  .fa-solid {
+    cursor: pointer;
+  }
+  
+  .logo {
+    margin: 0px;
+    padding-top: 0px;
+    position: absolute;
+    margin-left: 9px;
+    width: 150px;
+    height: 50px;
+  }
+
+  i {
+    color: black !important;
+  }
+  @media (max-width: 850px) {
+    .avatar-container {
+      display: none;
+    }
+  }
+  @media (max-width: 800px) {
+    .fa-bars {
+      color: black;
+      display: block;
+    }
+    .logo{
+      margin: 0px;
+      padding-top: 0px;
+      position: absolute;
+      margin-left: 55px;
+    }
+  }
+  
+  

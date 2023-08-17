@@ -1,0 +1,74 @@
+app-header {
+    position: fixed;
+    width: 100%;
+    top: 0px;
+    height: 6rem;
+    z-index: 2;
+  }
+  main {
+    position: absolute;
+    width: 100%;
+    top: 5rem;
+    z-index: 1;
+  }
+  app-sliderbar {
+    position: fixed;
+    left: 0rem;
+    width: 0px;
+    height: calc(100vh - 0rem);
+    background-color: var(--background) ;
+    border-top: 1px solid white;
+    overflow-x: hidden;
+    white-space: nowrap;
+    transition: width 325ms ease-in;
+    z-index: 99999;
+  }
+  .nav-list-open {
+    width: 325px;
+  }
+  .display-area {
+    position: absolute;
+    left: 0px;
+    width: calc(100%);
+    transition: left 325ms ease-in, width 250ms ease-in;
+  }
+  .display-area-shrink {
+    left: 350px;
+    width: calc(100% - 350px);
+  }
+  
+  @media (max-width: 795px) {
+    app-header {
+      height: 3.5rem;
+    }
+    main {
+      top: 3.5rem;
+    }
+   
+  }
+  
+  
+  @media (max-width: 800px) {
+    .display-area-shrink {
+      left: 0px;
+      position: relative;
+    }
+    .display-area {
+      width: 100%;
+    }
+    app-sidebar {
+      z-index: 1;
+    }
+  }
+  .block{
+    pointer-events: none;
+  }
+  @media (max-width: 795px) {
+    app-header {
+      height: 3.5rem;
+    }
+    main {
+      top: 5rem;
+    }
+   
+  }
